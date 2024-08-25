@@ -30,9 +30,9 @@ export const authOptions: AuthOptions = {
             authorize: async (credentials) => {
                 if (!credentials) return null;
 
-                const endpoint = credentials.userType === 'guide' 
-                    ? 'http://localhost:3000/auth/login/guide' 
-                    : 'http://localhost:3000/auth/login/student';
+                const endpoint = credentials.userType === 'guide'
+                    ? 'http://127.0.0.1:3000/auth/login/guide'
+                    : 'http://127.0.0.1:3000/auth/login/student';
 
                 const res = await fetch(endpoint, {
                     method: 'POST',

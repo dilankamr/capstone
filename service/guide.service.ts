@@ -1,5 +1,5 @@
 export interface Guide {
-    
+
     id: string;
     firstName: string;
     lastName: string;
@@ -24,17 +24,17 @@ export interface Guide {
     job: string;
 
   }
-  
+
   export async function getAllGuide(): Promise<Guide[]> {
-    const url: string = "http://localhost:3000/guides";
+    const url: string = "http://127.0.0.1:3000/guides";
     const response: Response = await fetch(url, { cache: "no-store" });
     const guides: Guide[] = await response.json();
-  
+
     return guides;
   }
 
 export async function getAllGuideUpdated(): Promise<MatchingGuide[]> {
-  const url: string = "http://localhost:3000/guides/get-all";
+  const url: string = "http://127.0.0.1:3000/guides/get-all";
   const response: Response = await fetch(url, { cache: "no-store" });
   const guides: MatchingGuide[] = await response.json();
 
@@ -42,7 +42,7 @@ export async function getAllGuideUpdated(): Promise<MatchingGuide[]> {
 }
 
 export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> {
-  const url: string = "http://localhost:3000/projects/"+pid+"/matchingGuides/";
+  const url: string = "http://127.0.0.1:3000/projects/"+pid+"/matchingGuides/";
   const response: Response = await fetch(url, { cache: "no-store" });
   console.log("matchingGuide response",response);
 
@@ -50,17 +50,17 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
 
   return guides;
 }
-  
+
   export async function getOneGuide(id: string): Promise<Guide> {
-    const url: string = "http://localhost:3000/guides/" + id;
+    const url: string = "http://127.0.0.1:3000/guides/" + id;
     const response: Response = await fetch(url,{ cache: "no-store" });
     const guide: Guide = await response.json();
-  
+
     return guide;
   }
-  
+
   export async function saveGuide(guideRequest: Guide): Promise<Guide> {
-    const url: string = "http://localhost:3000/auth/signup/guide";
+    const url: string = "http://127.0.0.1:3000/auth/signup/guide";
     const request = new Request(url, {
       body: JSON.stringify(guideRequest),
       headers: {
@@ -72,14 +72,14 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
     });
     const response: Response = await fetch(request);
     const guide: Guide = await response.json();
-  
+
     return guide;
   }
-  
-  export async function updateGuide(guideRequest: Guide): Promise<Guide> {
- 
 
-    const url: string = "http://localhost:3000/guides/" + guideRequest.id;
+  export async function updateGuide(guideRequest: Guide): Promise<Guide> {
+
+
+    const url: string = "http://127.0.0.1:3000/guides/" + guideRequest.id;
     const dto = {
       firstName: guideRequest.firstName,
       lastName: guideRequest.lastName,
@@ -87,9 +87,9 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
       about: guideRequest.about,
       profilePic:guideRequest.profilePic,
       milestones: guideRequest.milestones,
-      technologies: guideRequest.technologies || [], 
+      technologies: guideRequest.technologies || [],
       categories: guideRequest.categories || [],
-      socialMediaLinks: guideRequest.socialMediaLinks || [], 
+      socialMediaLinks: guideRequest.socialMediaLinks || [],
     };
     console.log('Sending payload:', dto);
 
@@ -104,22 +104,22 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
     });
     const response: Response = await fetch(request);
     if (!response.ok) {
-      console.error('Update failed:', await response.json());  
+      console.error('Update failed:', await response.json());
       throw new Error('Failed to update guide');
     }
     const guide: Guide = await response.json();
     console.log('Received response:', guide);
-  
+
     return guide;
   }
 
   export async function updateGuidePic(guideRequest: Guide): Promise<Guide> {
- 
+
   const technologies = guideRequest.technologies.map(tech => tech.id);
   const categories = guideRequest.categories.map(cat => cat.id);
 
 
-    const url: string = "http://localhost:3000/guides/" + guideRequest.id;
+    const url: string = "http://127.0.0.1:3000/guides/" + guideRequest.id;
     const dto = {
       firstName: guideRequest.firstName,
       lastName: guideRequest.lastName,
@@ -127,9 +127,9 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
       about: guideRequest.about,
       profilePic:guideRequest.profilePic,
       milestones: guideRequest.milestones,
-      technologies: technologies|| [], 
+      technologies: technologies|| [],
       categories: categories || [],
-      socialMediaLinks: guideRequest.socialMediaLinks || []   
+      socialMediaLinks: guideRequest.socialMediaLinks || []
     };
     console.log('Sending payload:', dto);
 
@@ -144,18 +144,18 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
     });
     const response: Response = await fetch(request);
     if (!response.ok) {
-      console.error('Update failed:', await response.json());  
+      console.error('Update failed:', await response.json());
       throw new Error('Failed to update guide');
     }
     const guide: Guide = await response.json();
     console.log('Received response:', guide);
-  
+
     return guide;
   }
-  
-  
+
+
   export async function deleteGuide(id: string): Promise<Guide> {
-    const url: string = "http://localhost:3000/guides/" + id;
+    const url: string = "http://127.0.0.1:3000/guides/" + id;
     const request = new Request(url, {
       headers: {
         "Content-Type": "application/json",
@@ -166,7 +166,6 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
     });
     const response: Response = await fetch(request);
     const guide: Guide = await response.json();
-  
+
     return guide;
   }
-  

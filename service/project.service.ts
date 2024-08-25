@@ -12,7 +12,7 @@ export interface Project {
 
 
 export async function getAllProject(): Promise<Project[]> {
-  const url: string = "http://localhost:3000/projects";
+  const url: string = "http://127.0.0.1:3000/projects";
   const response: Response = await fetch(url, { cache: "no-store" });
   const projects: Project[] = await response.json();
 
@@ -20,7 +20,7 @@ export async function getAllProject(): Promise<Project[]> {
 }
 
 export async function getAllSpecificProject(studentId: string): Promise<Project> {
-  const url: string = `http://localhost:3000/projects/${studentId}` ;
+  const url: string = `http://127.0.0.1:3000/projects/${studentId}` ;
   const response = await fetch(url,{ cache: "no-store" });
   const project: Project = await response.json();
 
@@ -31,7 +31,7 @@ export async function getAllSpecificProject(studentId: string): Promise<Project>
   return project;
 }
 export async function findByID(id: string): Promise<Project> {
-  const url: string = "http://localhost:3000/projects/" + id;
+  const url: string = "http://127.0.0.1:3000/projects/" + id;
   const response: Response = await fetch(url,{ cache: "no-store" });
   const project: Project = await response.json();
 
@@ -39,7 +39,7 @@ export async function findByID(id: string): Promise<Project> {
 }
 
 export async function saveProject(projectRequest: Project): Promise<Project> {
-  const url: string = "http://localhost:3000/projects";
+  const url: string = "http://127.0.0.1:3000/projects";
   const request = new Request(url, {
     body: JSON.stringify(projectRequest),
     headers: {
@@ -56,7 +56,7 @@ export async function saveProject(projectRequest: Project): Promise<Project> {
 }
 
 export async function updateProject(projectRequest: Project): Promise<Project> {
-  const url: string = "http://localhost:3000/projects/" + projectRequest.id;
+  const url: string = "http://127.0.0.1:3000/projects/" + projectRequest.id;
   const dto = {
     title: projectRequest.title,
     summary: projectRequest.summary,
@@ -79,7 +79,7 @@ export async function updateProject(projectRequest: Project): Promise<Project> {
 }
 
 export async function deleteProject(id: string): Promise<Project> {
-  const url: string = "http://localhost:3000/projects/" + id;
+  const url: string = "http://127.0.0.1:3000/projects/" + id;
   const request = new Request(url, {
     headers: {
       "Content-Type": "application/json",
@@ -95,7 +95,7 @@ export async function deleteProject(id: string): Promise<Project> {
 }
 
 export async function findByStudentId(studentId:string): Promise<Project[]> {
-  const url: string = "http://localhost:3000/projects/"+studentId;
+  const url: string = "http://127.0.0.1:3000/projects/"+studentId;
   const response: Response = await fetch(url, { cache: "no-store" });
   console.log("existing projects for student, "+studentId+ ":  \n"+response);
 
@@ -109,7 +109,7 @@ export async function findByStudentId(studentId:string): Promise<Project[]> {
 
 
 // In your service file (e.g., projectService.ts)
- 
+
 // import useAxiosAuth from "@/lib/hook/useAxiosAuth";
 // import axios from 'axios';
 
@@ -124,21 +124,21 @@ export async function findByStudentId(studentId:string): Promise<Project[]> {
 
 // export const getAllProject = async (): Promise<Project[]> => {
 //   const axiosAuth = useAxiosAuth();
-//   const url = "http://localhost:3000/projects";
+//   const url = "http://127.0.0.1:3000/projects";
 //   const response = await axiosAuth.get(url, { cache: "no-store" });
 //   return response.data;
 // };
 
 // export const getOneProject = async (id: string): Promise<Project> => {
 //   const axiosAuth = useAxiosAuth();
-//   const url = `http://localhost:3000/projects/${id}`;
+//   const url = `http://127.0.0.1:3000/projects/${id}`;
 //   const response = await axiosAuth.get(url);
 //   return response.data;
 // };
 
 // export const saveProject = async (projectRequest: Project): Promise<Project> => {
 //   const axiosAuth = useAxiosAuth();
-//   const url = "http://localhost:3000/projects";
+//   const url = "http://127.0.0.1:3000/projects";
 //   const response = await axiosAuth.post(url, projectRequest, {
 //     headers: {
 //       "Content-Type": "application/json",
@@ -150,7 +150,7 @@ export async function findByStudentId(studentId:string): Promise<Project[]> {
 
 // export const updateProject = async (projectRequest: Project): Promise<Project> => {
 //   const axiosAuth = useAxiosAuth();
-//   const url = `http://localhost:3000/projects/${projectRequest.id}`;
+//   const url = `http://127.0.0.1:3000/projects/${projectRequest.id}`;
 //   const dto = {
 //     title: projectRequest.title,
 //     summary: projectRequest.summary,
@@ -168,7 +168,7 @@ export async function findByStudentId(studentId:string): Promise<Project[]> {
 
 // export const deleteProject = async (id: string): Promise<Project> => {
 //   const axiosAuth = useAxiosAuth();
-//   const url = `http://localhost:3000/projects/${id}`;
+//   const url = `http://127.0.0.1:3000/projects/${id}`;
 //   const response = await axiosAuth.delete(url, {
 //     headers: {
 //       "Content-Type": "application/json",
