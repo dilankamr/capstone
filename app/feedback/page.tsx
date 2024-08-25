@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchFeedbacks, createFeedback, deleteFeedback } from '../../service/feedback.service';
 import { Feedback, FeedbackRequest } from './feedback';
-import FeedbackDecision from '../components/feedbackDecision';
+import FeedbackDecision from '../components/FeedbackDecision';
 import FeedbackFormPage from './FeedbackFormPage';
 import FeedbackDisplay from './FeedbackDisplay';
 import useAxiosAuth from '@/lib/hook/useAxiosAuth';
@@ -12,7 +12,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 const HomePage = () => {
     const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
-    const [currentStep, setCurrentStep] = useState(1); 
+    const [currentStep, setCurrentStep] = useState(1);
     const [feedbackText, setFeedbackText] = useState('');
     const [rating, setRating] = useState(0);
     const axiosAuth = useAxiosAuth();
@@ -20,7 +20,7 @@ const HomePage = () => {
     const searchParams = useSearchParams();
     const guideId = searchParams?.get('id') || '';
 
-    
+
 
     useEffect(() => {
         loadFeedbacks();
@@ -38,8 +38,8 @@ const HomePage = () => {
     const handleFeedbackSubmit = async (feedbackRequest: FeedbackRequest) => {
         try {
             await createFeedback(axiosAuth, feedbackRequest);
-            setCurrentStep(3);  
-            loadFeedbacks(); 
+            setCurrentStep(3);
+            loadFeedbacks();
         } catch (error) {
             console.error('Error submitting feedback:', error);
         }
@@ -68,7 +68,7 @@ const HomePage = () => {
     };
 
     const handleClose = () => {
-        setCurrentStep(1);  
+        setCurrentStep(1);
     };
 
     return (
