@@ -9,7 +9,7 @@ export interface Student {
 }
 
 export async function saveStudent(studentRequest: Student): Promise<Student> {
-    const url: string = "http://127.0.0.1:3000/auth/signup/student";
+    const url: string = "http://44.243.8.35:3000/auth/signup/student";
     const request = new Request(url, {
         body: JSON.stringify(studentRequest),
         headers: {

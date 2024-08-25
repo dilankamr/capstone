@@ -26,7 +26,7 @@ export interface Guide {
   }
 
   export async function getAllGuide(): Promise<Guide[]> {
-    const url: string = "http://127.0.0.1:3000/guides";
+    const url: string = "http://44.243.8.35:3000/guides";
     const response: Response = await fetch(url, { cache: "no-store" });
     const guides: Guide[] = await response.json();
 
@@ -34,7 +34,7 @@ export interface Guide {
   }
 
 export async function getAllGuideUpdated(): Promise<MatchingGuide[]> {
-  const url: string = "http://127.0.0.1:3000/guides/get-all";
+  const url: string = "http://44.243.8.35:3000/guides/get-all";
   const response: Response = await fetch(url, { cache: "no-store" });
   const guides: MatchingGuide[] = await response.json();
 
@@ -42,7 +42,7 @@ export async function getAllGuideUpdated(): Promise<MatchingGuide[]> {
 }
 
 export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> {
-  const url: string = "http://127.0.0.1:3000/projects/"+pid+"/matchingGuides/";
+  const url: string = "http://44.243.8.35:3000/projects/"+pid+"/matchingGuides/";
   const response: Response = await fetch(url, { cache: "no-store" });
   console.log("matchingGuide response",response);
 
@@ -52,7 +52,7 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
 }
 
   export async function getOneGuide(id: string): Promise<Guide> {
-    const url: string = "http://127.0.0.1:3000/guides/" + id;
+    const url: string = "http://44.243.8.35:3000/guides/" + id;
     const response: Response = await fetch(url,{ cache: "no-store" });
     const guide: Guide = await response.json();
 
@@ -60,7 +60,7 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
   }
 
   export async function saveGuide(guideRequest: Guide): Promise<Guide> {
-    const url: string = "http://127.0.0.1:3000/auth/signup/guide";
+    const url: string = "http://44.243.8.35:3000/auth/signup/guide";
     const request = new Request(url, {
       body: JSON.stringify(guideRequest),
       headers: {
@@ -79,7 +79,7 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
   export async function updateGuide(guideRequest: Guide): Promise<Guide> {
 
 
-    const url: string = "http://127.0.0.1:3000/guides/" + guideRequest.id;
+    const url: string = "http://44.243.8.35:3000/guides/" + guideRequest.id;
     const dto = {
       firstName: guideRequest.firstName,
       lastName: guideRequest.lastName,
@@ -119,7 +119,7 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
   const categories = guideRequest.categories.map(cat => cat.id);
 
 
-    const url: string = "http://127.0.0.1:3000/guides/" + guideRequest.id;
+    const url: string = "http://44.243.8.35:3000/guides/" + guideRequest.id;
     const dto = {
       firstName: guideRequest.firstName,
       lastName: guideRequest.lastName,
@@ -155,7 +155,7 @@ export async function getAllMatchingGuide(pid:string): Promise<MatchingGuide[]> 
 
 
   export async function deleteGuide(id: string): Promise<Guide> {
-    const url: string = "http://127.0.0.1:3000/guides/" + id;
+    const url: string = "http://44.243.8.35:3000/guides/" + id;
     const request = new Request(url, {
       headers: {
         "Content-Type": "application/json",

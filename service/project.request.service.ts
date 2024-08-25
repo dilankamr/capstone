@@ -23,7 +23,7 @@ export interface ProjectRequest {
 // }
 
 export async function createRequest(projectRequest: ProjectRequest): Promise<ProjectRequest> {
-    const url: string = "http://127.0.0.1:3000/projectRequests";
+    const url: string = "http://44.243.8.35:3000/projectRequests";
     const request = new Request(url, {
         body: JSON.stringify(projectRequest),
         headers: {
@@ -40,7 +40,7 @@ export async function createRequest(projectRequest: ProjectRequest): Promise<Pro
 }
 
 export async function deleteRequest(id: string): Promise<ProjectRequest> {
-    const url: string = "http://127.0.0.1:3000/projectRequests/" + id;
+    const url: string = "http://44.243.8.35:3000/projectRequests/" + id;
     const request = new Request(url, {
         headers: {
             "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export async function deleteRequest(id: string): Promise<ProjectRequest> {
 }
 
 export async function getRequestsByGuide(guideId:string): Promise<ProjectRequest[]> {
-    const url: string = "http://127.0.0.1:3000/projectRequests/"+guideId;
+    const url: string = "http://44.243.8.35:3000/projectRequests/"+guideId;
     const response: Response = await fetch(url, { cache: "no-store" });
     console.log("project requests for guide, "+guideId+ ":  \n"+response);
 
@@ -68,7 +68,7 @@ export async function getRequestsByGuide(guideId:string): Promise<ProjectRequest
 }
 
 export async function getRequestsByProject(projectId:string): Promise<ProjectRequest[]> {
-    const url: string = "http://127.0.0.1:3000/projectRequests/projectId/"+projectId;
+    const url: string = "http://44.243.8.35:3000/projectRequests/projectId/"+projectId;
     const response: Response = await fetch(url, { cache: "no-store" });
     console.log("project requests for guide, "+projectId+ ":  \n"+response);
 
@@ -80,7 +80,7 @@ export async function getRequestsByProject(projectId:string): Promise<ProjectReq
 }
 
 export async function  rejectRequest(id: string): Promise<ProjectRequest> {
-    const url: string = "http://127.0.0.1:3000/projectRequests/" + id+"/reject";
+    const url: string = "http://44.243.8.35:3000/projectRequests/" + id+"/reject";
     const request = new Request(url, {
         headers: {
             "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export async function  rejectRequest(id: string): Promise<ProjectRequest> {
 }
 
 export async function  acceptRequest(id: string): Promise<ProjectRequest> {
-    const url: string = "http://127.0.0.1:3000/projectRequests/" + id+"/accept";
+    const url: string = "http://44.243.8.35:3000/projectRequests/" + id+"/accept";
     const request = new Request(url, {
         headers: {
             "Content-Type": "application/json",
@@ -112,7 +112,7 @@ export async function  acceptRequest(id: string): Promise<ProjectRequest> {
 }
 
 export async function getFinalStatusOfProject(projectId: string): Promise<string> {
-    const url: string = "http://127.0.0.1:3000/projectRequests/" + projectId +"/projectFinalStatus";
+    const url: string = "http://44.243.8.35:3000/projectRequests/" + projectId +"/projectFinalStatus";
     const response = await fetch(url, { cache: "no-store" });
     const data = await response.text(); // Capture the JSON data
 
@@ -120,7 +120,7 @@ export async function getFinalStatusOfProject(projectId: string): Promise<string
 }
 
 export async function getAcceptedGuideIdByProjectId(projectId: string): Promise<string> {
-    const url: string = "http://127.0.0.1:3000/projectRequests/" + projectId +"/acceptedGuideID";
+    const url: string = "http://44.243.8.35:3000/projectRequests/" + projectId +"/acceptedGuideID";
     const response = await fetch(url, { cache: "no-store" });
     const data = await response.text(); // Capture the JSON data
 
@@ -133,7 +133,7 @@ export async function getAcceptedGuideIdByProjectId(projectId: string): Promise<
 }
 
 export async function getRejectedGuideIdsByProjectId(projectId: string): Promise<string[]> {
-    const url: string = "http://127.0.0.1:3000/projectRequests/" + projectId +"/rejectedGuidesIds";
+    const url: string = "http://44.243.8.35:3000/projectRequests/" + projectId +"/rejectedGuidesIds";
     const response = await fetch(url, { cache: "no-store" });
     const data = await response.json(); // Capture the JSON data
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL= "http://127.0.0.1:3000";
+const BASE_URL= "http://44.243.8.35:3000";
 
 
 export default axios.create({

@@ -31,8 +31,8 @@ export const authOptions: AuthOptions = {
                 if (!credentials) return null;
 
                 const endpoint = credentials.userType === 'guide'
-                    ? 'http://127.0.0.1:3000/auth/login/guide'
-                    : 'http://127.0.0.1:3000/auth/login/student';
+                    ? 'http://44.243.8.35:3000/auth/login/guide'
+                    : 'http://44.243.8.35:3000/auth/login/student';
 
                 const res = await fetch(endpoint, {
                     method: 'POST',

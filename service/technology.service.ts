@@ -5,7 +5,7 @@ export interface Technology {
 }
 
 export async function getAllTechnology(): Promise<Technology[]> {
-    const url: string = "http://127.0.0.1:3000/technology";
+    const url: string = "http://44.243.8.35:3000/technology";
     const response: Response = await fetch(url, { cache: "no-store" });
     const technologies: Technology[] = await response.json();
 
@@ -14,7 +14,7 @@ export async function getAllTechnology(): Promise<Technology[]> {
 
 
 export async function saveTechnology(technologyRequest: Technology): Promise<Technology> {
-    const url: string = "http://127.0.0.1:3000/technology";
+    const url: string = "http://44.243.8.35:3000/technology";
     const request = new Request(url, {
         body: JSON.stringify(technologyRequest),
         headers: {

@@ -1,7 +1,7 @@
 
 import { Feedback, FeedbackRequest } from '../app/feedback/feedback';
 
-const API_URL = 'http://127.0.0.1:3000/feedbacks';
+const API_URL = 'http://44.243.8.35:3000/feedbacks';
 
 export const fetchFeedbacks = async (axiosInstance: any): Promise<Feedback[]> => {
     const response = await axiosInstance.get(API_URL);
