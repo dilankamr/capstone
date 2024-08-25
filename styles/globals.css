@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.check-list {
+    padding-top: 2.5rem; /* pt-10 */
+    list-style: none;
+    padding-left: 0;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 1.5rem; /* space for the check mark */
+    margin-bottom: 1rem; /* spacing between items */
+}
+
+.check-list li::before {
+    content: "✔"; /* Check mark */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white; /* Color of the check mark */
+    font-size: 1rem; /* Adjust size as needed */
+}
